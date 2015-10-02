@@ -1,19 +1,23 @@
-/*global todomvc */
-'use strict';
+(function(){
 
-/**
- * Services that persists and retrieves TODOs from localStorage
-*/
-todomvc.factory('todoStorage', function () {
-	var STORAGE_ID = 'todos-angularjs-perf';
+  /*global angular */
+  'use strict';
 
-	return {
-		get: function () {
-			return JSON.parse(localStorage.getItem(STORAGE_ID) || '[]');
-		},
+  /**
+   * Services that persists and retrieves TODOs from localStorage
+  */
+  angular.module('todomvc').factory('todoStorage', function () {
+    var STORAGE_ID = 'todos-angularjs-perf';
 
-		put: function (todos) {
-			localStorage.setItem(STORAGE_ID, JSON.stringify(todos));
-		}
-	};
-});
+    return {
+      get: function () {
+        return JSON.parse(localStorage.getItem(STORAGE_ID) || '[]');
+      },
+
+      put: function (todos) {
+        localStorage.setItem(STORAGE_ID, JSON.stringify(todos));
+      }
+    };
+  });
+
+}());
